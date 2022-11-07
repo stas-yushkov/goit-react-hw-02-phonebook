@@ -1,3 +1,5 @@
+**Read in other languages: [Українська](README.md), [Polska](README.pl.md), [English](README.en.md), [Española](README.es.md).**
+
 # React homework template
 
 Este proyecto fue creado con la ayuda de
