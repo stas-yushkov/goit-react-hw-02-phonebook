@@ -4,12 +4,13 @@ import { ContactForm } from './ContactForm/ContactForm';
 import { ContactList } from './ContactList/ContactList';
 import { Filter } from './Filter/Filter';
 
+import { colors } from 'constants/colors';
+
 export class App extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
       contacts: [
-        { id: 'id-qwe', name: 'qwe', number: '666-66-66' },
         { id: 'id-1', name: 'Rosie Simpson', number: '459-12-56' },
         { id: 'id-2', name: 'Hermione Kline', number: '443-89-12' },
         { id: 'id-3', name: 'Eden Clements', number: '645-17-79' },
@@ -63,7 +64,7 @@ export class App extends PureComponent {
           justifyContent: 'center',
           alignItems: 'center',
           fontSize: 40,
-          color: '#010101',
+          color: colors.color,
         }}
       >
         <section>

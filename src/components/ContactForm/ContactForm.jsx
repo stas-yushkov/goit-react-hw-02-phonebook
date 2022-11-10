@@ -1,9 +1,9 @@
 import { PureComponent } from 'react';
 import { nanoid } from 'nanoid';
 
-import { StyledButton } from 'components/StyledComponents';
+import { StyledButton, StyledInput } from 'components/StyledComponents';
 
-import { StyledForm } from './StyledComponents';
+import { InputWrapper, StyledForm } from './StyledComponents';
 
 export class ContactForm extends PureComponent {
   constructor(props) {
@@ -48,9 +48,10 @@ export class ContactForm extends PureComponent {
   render() {
     return (
       <StyledForm onSubmit={this.handleSubmit}>
-        <label>
-          Name
-          <input
+        <InputWrapper>
+          <label htmlFor="name">Name</label>
+          <StyledInput
+            id="name"
             type="text"
             name="name"
             pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
@@ -59,10 +60,11 @@ export class ContactForm extends PureComponent {
             value={this.state.name}
             onChange={this.handleInputChange}
           />
-        </label>
-        <label>
-          Number
-          <input
+        </InputWrapper>
+        <InputWrapper>
+          <label htmlFor="number">Number</label>
+          <StyledInput
+            id="number"
             type="tel"
             name="number"
             pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
@@ -71,7 +73,7 @@ export class ContactForm extends PureComponent {
             value={this.state.number}
             onChange={this.handleInputChange}
           />
-        </label>
+        </InputWrapper>
         <StyledButton type="submit">Add contact</StyledButton>
       </StyledForm>
     );

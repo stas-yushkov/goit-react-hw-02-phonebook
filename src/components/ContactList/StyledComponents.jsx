@@ -1,7 +1,9 @@
 import styled from 'styled-components';
 
 export const StyledList = styled.ul`
-  //
+  list-style: circle;
+  padding: 10px 0;
+  margin: 0;
 `;
 
 export const ListItem = styled.li`
@@ -11,8 +13,5 @@ export const ListItem = styled.li`
 `;
 
 export const ItemText = styled.span`
-  /* display: flex;
-  align-items: center;
-  justify-content: space-between; */
   margin-right: 5px;
 `;

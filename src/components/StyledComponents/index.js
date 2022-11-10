@@ -6,6 +6,7 @@ export const StyledButton = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
+  width: fit-content;
   padding: ${props => props.type === 'button' ? '10px' : '20px'};
   background-color: ${colors.buttonBg};
   color: ${colors.button};
@@ -19,5 +20,21 @@ export const StyledButton = styled.button`
   }
   &:active {
     background-color: ${colors.buttonBgPressed};
+  }
+`
+
+export const StyledInput = styled.input`
+  margin-top: 5px;
+  padding:  10px;
+  width: ${props => props.width || '300px'};
+  border: 1px solid ${colors.color};
+  border-radius: 5px;
+
+  &:hover,
+  &:focus {
+    //
+  }
+  &:active {
+    //
   }
 `
