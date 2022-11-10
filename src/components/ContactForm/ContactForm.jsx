@@ -10,20 +10,30 @@ export class ContactForm extends PureComponent {
     this.onSubmit = this.props.onSubmit;
   }
 
+  isDulpicate = name => {
+    return this.props.contactList.find(contact => contact.name === name);
+  };
+
   handleInputChange = e => {
-    const name = e.target.name;
+    const { name, value } = e.target;
 
     this.setState(prev => ({
       ...prev,
-      [name]: e.target.value,
+      [name]: value,
     }));
   };
 
   handleSubmit = e => {
     e.preventDefault();
+    const { name, number } = this.state;
+
+    if (this.isDulpicate(name)) {
+      return alert(`${name} is is already in contacts.`);
+    }
+
     this.onSubmit({
-      name: this.state.name,
-      number: this.state.number,
+      name,
+      number,
       id: nanoid(),
     });
 
