@@ -8,6 +8,7 @@ export class App extends PureComponent {
     this.state = {
       contacts: [],
       name: '',
+      number: '',
     };
   }
 
@@ -17,18 +18,22 @@ export class App extends PureComponent {
       contacts: [
         ...prev.contacts,
         {
-          name: prev.name,
+          name: this.state.name,
+          number: this.state.number,
           id: nanoid(),
         },
       ],
       name: '',
+      number: '',
     }));
   };
 
   handleInputChange = e => {
+    const name = e.target.name;
+
     this.setState(prev => ({
       ...prev,
-      name: e.target.value,
+      [name]: e.target.value,
     }));
   };
 
@@ -61,12 +66,24 @@ export class App extends PureComponent {
                 onChange={this.handleInputChange}
               />
             </label>
+            <label>
+              Number
+              <input
+                type="tel"
+                name="number"
+                pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
+                title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
+                required
+                value={this.state.number}
+                onChange={this.handleInputChange}
+              />
+            </label>
             <button type="submit">Add contact</button>
           </form>
           <h2>Contacts</h2>
           <ul>
             {contacts.map(elem => (
-              <li key={elem.id}>{elem.name}</li>
+              <li key={elem.id}>{`${elem.name}: ${elem.number}`}</li>
             ))}
           </ul>
         </section>
