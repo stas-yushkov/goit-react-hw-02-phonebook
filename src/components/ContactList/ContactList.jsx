@@ -1,9 +1,18 @@
 import { StyledList } from './StyledComponents';
 
-export const ContactList = ({ renderContacts }) => {
+export const ContactList = ({ listOfContacts, onDelete }) => {
   return (
     <StyledList>
-      <ul>{renderContacts()}</ul>
+      <ul>
+        {listOfContacts.map(({ id, name, number }) => (
+          <li key={id}>
+            {`${name}: ${number}`}
+            <button onClick={() => onDelete(id)} type="button">
+              Delete
+            </button>
+          </li>
+        ))}
+      </ul>
     </StyledList>
   );
 };

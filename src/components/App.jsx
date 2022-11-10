@@ -9,8 +9,8 @@ export class App extends PureComponent {
     super(props);
     this.state = {
       contacts: [
-        { id: 'id-1', name: 'qwe', number: '459-12-56' },
-        // { id: 'id-1', name: 'Rosie Simpson', number: '459-12-56' },
+        { id: 'id-qwe', name: 'qwe', number: '666-66-66' },
+        { id: 'id-1', name: 'Rosie Simpson', number: '459-12-56' },
         { id: 'id-2', name: 'Hermione Kline', number: '443-89-12' },
         { id: 'id-3', name: 'Eden Clements', number: '645-17-79' },
         { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
@@ -33,20 +33,23 @@ export class App extends PureComponent {
     }));
   };
 
+  handleDelete = idToDelete => {
+    this.setState(prev => ({
+      ...prev,
+      contacts: this.state.contacts.filter(({ id }) => id !== idToDelete),
+    }));
+  };
+
   render() {
-    const contacts = this.state.contacts;
-    const filter = this.state.filter;
-    const renderContacts = () => {
-      if (!filter) {
-        return contacts.map(elem => (
-          <li key={elem.id}>{`${elem.name}: ${elem.number}`}</li>
-        ));
-      }
+    const { contacts, filter } = this.state;
+    const { onSubmit, handleFilterChange, handleDelete } = this;
+
+    const filteredContacts = () => {
       if (filter) {
-        return contacts
-          .filter(elem => elem.name.includes(filter))
-          .map(elem => <li key={elem.id}>{`${elem.name}: ${elem.number}`}</li>);
+        return contacts.filter(contact => contact.name.includes(filter));
       }
+
+      return contacts;
     };
 
     return (
@@ -62,13 +65,13 @@ export class App extends PureComponent {
       >
         <section>
           <h1>Phonebook</h1>
-          <ContactForm
-            contactList={this.state.contacts}
-            onSubmit={this.onSubmit}
-          />
+          <ContactForm contactList={contacts} onSubmit={onSubmit} />
           <h2>Contacts</h2>
-          <Filter handleFilterChange={this.handleFilterChange} />
-          <ContactList renderContacts={renderContacts} />
+          <Filter handleFilterChange={handleFilterChange} />
+          <ContactList
+            listOfContacts={filteredContacts()}
+            onDelete={handleDelete}
+          />
         </section>
       </div>
     );
