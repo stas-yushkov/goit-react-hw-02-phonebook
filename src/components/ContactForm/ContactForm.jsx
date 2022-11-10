@@ -1,6 +1,8 @@
 import { PureComponent } from 'react';
 import { nanoid } from 'nanoid';
 
+import { StyledButton } from 'components/StyledComponents';
+
 import { StyledForm } from './StyledComponents';
 
 export class ContactForm extends PureComponent {
@@ -70,7 +72,7 @@ export class ContactForm extends PureComponent {
             onChange={this.handleInputChange}
           />
         </label>
-        <button type="submit">Add contact</button>
+        <StyledButton type="submit">Add contact</StyledButton>
       </StyledForm>
     );
   }

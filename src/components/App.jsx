@@ -40,17 +40,20 @@ export class App extends PureComponent {
     }));
   };
 
-  render() {
+  filteredContacts = () => {
     const { contacts, filter } = this.state;
-    const { onSubmit, handleFilterChange, handleDelete } = this;
 
-    const filteredContacts = () => {
-      if (filter) {
-        return contacts.filter(contact => contact.name.includes(filter));
-      }
+    if (filter) {
+      return contacts.filter(contact => contact.name.includes(filter));
+    }
 
-      return contacts;
-    };
+    return contacts;
+  };
+
+  render() {
+    const { contacts } = this.state;
+    const { onSubmit, handleFilterChange, handleDelete, filteredContacts } =
+      this;
 
     return (
       <div

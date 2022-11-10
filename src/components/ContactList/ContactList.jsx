@@ -1,18 +1,18 @@
-import { StyledList } from './StyledComponents';
+import { StyledButton } from 'components/StyledComponents';
+
+import { StyledList, ListItem, ItemText } from './StyledComponents';
 
 export const ContactList = ({ listOfContacts, onDelete }) => {
   return (
     <StyledList>
-      <ul>
-        {listOfContacts.map(({ id, name, number }) => (
-          <li key={id}>
-            {`${name}: ${number}`}
-            <button onClick={() => onDelete(id)} type="button">
-              Delete
-            </button>
-          </li>
-        ))}
-      </ul>
+      {listOfContacts.map(({ id, name, number }) => (
+        <ListItem key={id}>
+          <ItemText>{`${name}: ${number}`}</ItemText>
+          <StyledButton onClick={() => onDelete(id)} type="button">
+            Delete
+          </StyledButton>
+        </ListItem>
+      ))}
     </StyledList>
   );
 };
