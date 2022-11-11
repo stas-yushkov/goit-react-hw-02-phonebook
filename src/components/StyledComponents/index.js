@@ -38,3 +38,8 @@ export const StyledInput = styled.input`
     //
   }
 `
+
+export const MainSection = styled.section`
+  width: 700px;
+  padding: 0 20px;
+`

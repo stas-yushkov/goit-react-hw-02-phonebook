@@ -1,5 +1,6 @@
 import { PureComponent } from 'react';
 import { nanoid } from 'nanoid';
+import PropTypes from 'prop-types';
 
 import { StyledButton, StyledInput } from 'components/StyledComponents';
 
@@ -11,6 +12,17 @@ export class ContactForm extends PureComponent {
     this.state = { name: '', number: '' };
     this.onSubmit = this.props.onSubmit;
   }
+
+  static propTypes = {
+    onSubmit: PropTypes.func.isRequired,
+    contactList: PropTypes.arrayOf(
+      PropTypes.shape({
+        id: PropTypes.string,
+        name: PropTypes.string,
+        number: PropTypes.string,
+      })
+    ).isRequired,
+  };
 
   isDulpicate = name => {
     return this.props.contactList.find(contact => contact.name === name);

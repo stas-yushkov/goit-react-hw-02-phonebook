@@ -4,6 +4,8 @@ import { ContactForm } from './ContactForm/ContactForm';
 import { ContactList } from './ContactList/ContactList';
 import { Filter } from './Filter/Filter';
 
+import { MainSection } from './StyledComponents';
+
 import { colors } from 'constants/colors';
 
 export class App extends PureComponent {
@@ -62,21 +64,21 @@ export class App extends PureComponent {
           height: '100vh',
           display: 'flex',
           justifyContent: 'center',
-          alignItems: 'center',
+          alignItems: 'flex-start',
           fontSize: 40,
           color: colors.color,
         }}
       >
-        <section>
+        <MainSection>
           <h1>Phonebook</h1>
           <ContactForm contactList={contacts} onSubmit={onSubmit} />
           <h2>Contacts</h2>
           <Filter handleFilterChange={handleFilterChange} />
           <ContactList
-            listOfContacts={filteredContacts()}
+            contactList={filteredContacts()}
             onDelete={handleDelete}
           />
-        </section>
+        </MainSection>
       </div>
     );
   }

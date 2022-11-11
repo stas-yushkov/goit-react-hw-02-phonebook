@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 import { StyledInput } from 'components/StyledComponents';
 
 import { StyledFilter } from './StyledComponents';
@@ -16,4 +18,8 @@ export const Filter = ({ handleFilterChange }) => {
       />
     </StyledFilter>
   );
+};
+
+Filter.propTypes = {
+  handleFilterChange: PropTypes.func.isRequired,
 };
